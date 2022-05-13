@@ -18,8 +18,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/qiniu/qmgo/operator"
 	"github.com/stretchr/testify/require"
+	"github.com/webx-top/qmgo/operator"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 

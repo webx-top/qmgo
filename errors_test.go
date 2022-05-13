@@ -15,9 +15,10 @@ package qmgo
 
 import (
 	"errors"
+	"testing"
+
 	"github.com/stretchr/testify/require"
 	"go.mongodb.org/mongo-driver/mongo"
-	"testing"
 )
 
 func TestIsErrNoDocuments(t *testing.T) {

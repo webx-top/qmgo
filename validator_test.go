@@ -2,9 +2,10 @@ package qmgo
 
 import (
 	"context"
-	"go.mongodb.org/mongo-driver/bson"
 	"testing"
 	"time"
+
+	"go.mongodb.org/mongo-driver/bson"
 
 	"github.com/stretchr/testify/require"
 )

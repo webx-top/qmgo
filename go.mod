@@ -1,4 +1,4 @@
-module github.com/qiniu/qmgo
+module github.com/webx-top/qmgo
 
 go 1.16
 

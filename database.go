@@ -16,7 +16,7 @@ package qmgo
 import (
 	"context"
 
-	opts "github.com/qiniu/qmgo/options"
+	opts "github.com/webx-top/qmgo/options"
 	"go.mongodb.org/mongo-driver/bson/bsoncodec"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
@@ -31,8 +31,7 @@ type Database struct {
 
 // Collection gets collection from database
 func (d *Database) Collection(name string) *Collection {
-	var cp *mongo.Collection
-	cp = d.database.Collection(name)
+	cp := d.database.Collection(name)
 
 	return &Collection{
 		collection: cp,
@@ -72,11 +71,15 @@ func (d *Database) RunCommand(ctx context.Context, runCommand interface{}, opts 
 // The opts parameter can be used to specify options for the operation (see the options.CreateCollectionOptions
 // documentation).
 func (db *Database) CreateCollection(ctx context.Context, name string, opts ...opts.CreateCollectionOptions) error {
-	var option  = make([]*options.CreateCollectionOptions,0,len(opts))
-	for _,opt := range opts{
-		if opt.CreateCollectionOptions != nil{
-			option = append(option,opt.CreateCollectionOptions)
+	var option = make([]*options.CreateCollectionOptions, 0, len(opts))
+	for _, opt := range opts {
+		if opt.CreateCollectionOptions != nil {
+			option = append(option, opt.CreateCollectionOptions)
 		}
 	}
-	return db.database.CreateCollection(ctx,name,option...)
+	return db.database.CreateCollection(ctx, name, option...)
+}
+
+func (db *Database) Raw() *mongo.Database {
+	return db.database
 }

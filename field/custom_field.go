@@ -15,9 +15,10 @@ package field
 
 import (
 	"fmt"
-	"go.mongodb.org/mongo-driver/bson/primitive"
 	"reflect"
 	"time"
+
+	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
 // CustomFields defines struct of supported custom fields

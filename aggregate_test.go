@@ -16,9 +16,10 @@ package qmgo
 import (
 	"context"
 	"errors"
-	opts "github.com/qiniu/qmgo/options"
-	"go.mongodb.org/mongo-driver/mongo/options"
 	"testing"
+
+	opts "github.com/webx-top/qmgo/options"
+	"go.mongodb.org/mongo-driver/mongo/options"
 
 	"github.com/stretchr/testify/require"
 	"go.mongodb.org/mongo-driver/bson"

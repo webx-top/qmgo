@@ -18,8 +18,8 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/qiniu/qmgo/options"
 	"github.com/stretchr/testify/require"
+	"github.com/webx-top/qmgo/options"
 	"go.mongodb.org/mongo-driver/bson"
 	officialOpts "go.mongodb.org/mongo-driver/mongo/options"
 	"go.mongodb.org/mongo-driver/mongo/readpref"

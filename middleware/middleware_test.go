@@ -3,10 +3,10 @@ package middleware
 import (
 	"context"
 	"fmt"
-	"github.com/qiniu/qmgo/operator"
 	"testing"
 
 	"github.com/stretchr/testify/require"
+	"github.com/webx-top/qmgo/operator"
 )
 
 func TestMiddleware(t *testing.T) {
