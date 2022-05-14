@@ -79,7 +79,3 @@ func (db *Database) CreateCollection(ctx context.Context, name string, opts ...o
 	}
 	return db.database.CreateCollection(ctx, name, option...)
 }
-
-func (db *Database) Raw() *mongo.Database {
-	return db.database
-}
