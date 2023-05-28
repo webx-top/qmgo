@@ -6,6 +6,7 @@ var RawAggregate = options.Aggregate
 var RawChangeStream = options.ChangeStream
 var RawClient = options.Client
 var RawCreateCollection = options.CreateCollection
+var RawCollection = options.Collection
 var RawIndex = options.Index
 var RawInsertOne = options.InsertOne
 var RawInsertMany = options.InsertMany
@@ -51,6 +52,15 @@ func CreateCollection(opt *options.CreateCollectionOptions) CreateCollectionOpti
 	}
 	return CreateCollectionOptions{
 		CreateCollectionOptions: opt,
+	}
+}
+
+func Collection(opt *options.CollectionOptions) CollectionOptions {
+	if opt == nil {
+		opt = options.Collection()
+	}
+	return CollectionOptions{
+		CollectionOptions: opt,
 	}
 }
 
