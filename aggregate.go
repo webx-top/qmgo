@@ -64,13 +64,22 @@ func (a *Aggregate) One(result interface{}) error {
 	}
 	defer cr.Close()
 	if !cr.Next(result) {
+		if err := cr.Err(); err != nil {
+			return err
+		}
 		return ErrNoSuchDocuments
 	}
 	return err
 }
 
 // Iter return the cursor after aggregate
+// Deprecated, please use Cursor
 func (a *Aggregate) Iter() CursorI {
+	return a.Cursor()
+}
+
+// Cursor return the cursor after aggregate
+func (a *Aggregate) Cursor() CursorI {
 	opts := options.Aggregate()
 	if len(a.options) > 0 {
 		opts = a.options[0].AggregateOptions
