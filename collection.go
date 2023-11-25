@@ -26,7 +26,6 @@ import (
 	"go.mongodb.org/mongo-driver/bson/bsoncodec"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
-	"go.mongodb.org/mongo-driver/x/bsonx"
 )
 
 // Collection is a handle to a MongoDB collection
@@ -304,6 +303,7 @@ func (c *Collection) ReplaceOne(ctx context.Context, filter interface{}, doc int
 	if len(opts) > 0 {
 		if opts[0].ReplaceOptions != nil {
 			replaceOpts = opts[0].ReplaceOptions
+			replaceOpts.SetUpsert(false)
 		}
 		if opts[0].UpdateHook != nil {
 			h = opts[0].UpdateHook
@@ -433,12 +433,12 @@ func (c *Collection) ensureIndex(ctx context.Context, indexes []opts.IndexModel)
 	var indexModels []mongo.IndexModel
 	for _, idx := range indexes {
 		var model mongo.IndexModel
-		var keysDoc bsonx.Doc
+		var keysDoc bson.D
 
 		for _, field := range idx.Key {
 			key, n := SplitSortField(field)
 
-			keysDoc = keysDoc.Append(key, bsonx.Int32(n))
+			keysDoc = append(keysDoc, bson.E{Key: key, Value: n})
 		}
 		model = mongo.IndexModel{
 			Keys:    keysDoc,
